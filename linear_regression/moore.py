@@ -36,7 +36,7 @@ plt.show()
 
 d1 = Y - Yhat
 d2 = Y - Y.mean()
-r2 = 1 - d1.dot(d1)/d2.dot(d2)
+r2 = 1 - d1.dot(d1)/d2.dot(d2) #this is the coefficient of determination
 
 print "the  r-squred is: ", r2
 
