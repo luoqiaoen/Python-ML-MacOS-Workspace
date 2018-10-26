@@ -35,7 +35,7 @@ def get_mse(Y,Yhat):
     d = Y-Yhat
     return d.dot(d)/len(d)
 
-def plot_train_vs_test_curves(X, Y, sample=20, max_deg=20):
+def plot_train_vs_test_curves(X, Y, sample=20, max_deg=25):
     N = len(X)
     train_idx = np.random.choice(N, sample)
     Xtrain = X[train_idx]
@@ -71,7 +71,7 @@ def plot_train_vs_test_curves(X, Y, sample=20, max_deg=20):
     plt.show()
 
 if __name__ == "__main__":
-    N = 100
+    N = 200
     X = np.linspace(0, 6*np.pi, N)
     Y = np.sin(X)
 
