@@ -5,9 +5,8 @@ def get_data():
     df = pd.read_csv('ecommerce_data.csv')
     data = df.values
     np.random.shuffle(data)
-
-    X = data[:,:-1]
-    Y = data[:,-1].astype(np.int32)
+    X = data[:,:-1] #removed the last row
+    Y = data[:,-1].astype(np.int32) #the last row
 
     X[:,1] = (X[:,1]-X[:,1].mean())/X[:,1].std()
     X[:,2] = (X[:,2]-X[:,2].mean())/X[:,2].std()
@@ -15,15 +14,15 @@ def get_data():
     N,D = X.shape
     X2 = np.zeros((N,D+3))
     X2[:,0:(D-1)] = X[:,0:(D-1)]
-
     for n in xrange(N):
         t = int(X[n,D-1])
         X2[n,t+D-1] = 1
-
     return X2,Y
 
 def get_binary_data():
     X,Y = get_data()
     X2 = X[Y<=1]
+#    print(X2)
     Y2 = Y[Y<=1]
+#    print(Y2)
     return X2, Y2
