@@ -52,7 +52,8 @@ learning_rate = 0.1
 for i in xrange(100):
     if i%10 == 0:
         print cross_entropy(T,Y)
-    w += learning_rate * ( Xb.T.dot(T - Y))
+    #w += learning_rate * ( Xb.T.dot(T - Y)) #no prior
+    w += learning_rate * ( Xb.T.dot(T - Y)-0.1*w) #l2 regularization
     Y = sigmoid(Xb.dot(w))
 
 print("Final weights:", w)

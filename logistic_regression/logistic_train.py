@@ -48,8 +48,8 @@ for i in xrange(10000):
 print "Final train classficiation rate:", classification_rate(Ytrain, np.round(pYtrain))
 print "Final test classification rate:", classification_rate(Ytest, np.round(pYtest))
 
-legend1 = plt.plot(train_costs, label='train cost')
-legend2 = plt.plot(test_costs, label ='test cost')
+legend1, = plt.plot(train_costs, label='train cost')
+legend2, = plt.plot(test_costs, label ='test cost')
 
 plt.legend([legend1, legend2])
 plt.show()
