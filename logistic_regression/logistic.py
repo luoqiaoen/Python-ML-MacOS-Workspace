@@ -39,11 +39,20 @@ def cross_entropy(T,Y):
             E -= np.log(1-Y[i])
     return E
 
-print cross_entropy(T,Y)
+print cross_entropy(T,Y) #guess
 
-w = np.array([0,4,4]) #closed-form solution
+# w = np.array([0,4,4]) #closed-form solution
+#
+# z = Xb.dot(w)
+# Y = sigmoid(z)
+#
+# print cross_entropy(T,Y)
 
-z = Xb.dot(w)
-Y = sigmoid(z)
+learning_rate = 0.1
+for i in xrange(100):
+    if i%10 == 0:
+        print cross_entropy(T,Y)
+    w += learning_rate * ( Xb.T.dot(T - Y))
+    Y = sigmoid(Xb.dot(w))
 
-print cross_entropy(T,Y)
+print("Final weights:", w)
