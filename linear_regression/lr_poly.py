@@ -15,7 +15,7 @@ Y = np.array(Y)
 plt.scatter(X[:,1],Y)
 plt.show()
 
-w = np.linalg.solve(np.dot(X.T, X), np.dot(X.T, Y)) # this solve(a,b) computes aX=b for X
+w = np.linalg.solve(np.dot(X.T, X), np.dot(X.T, Y))
 Yhat = np.dot(X,w)
 
 plt.scatter(X[:,1], Y)

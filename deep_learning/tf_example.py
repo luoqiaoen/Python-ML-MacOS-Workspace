@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 #Generate Random Training Data
 Nclass = 500
 D = 2 #input dimension
-M = 3 #layer size
+M = 3 #hidden layer dimension
 K = 3 #number of classes
 
 X1 = np.random.randn(Nclass, D) + np.array([0,-2])
@@ -32,6 +32,7 @@ b1 = init_weights([M])
 W2 = init_weights([M,K])
 b2 = init_weights([K])
 
+# only one hidden layer for now
 Z1 = tf.nn.sigmoid( tf.matmul(tfX, W1) + b1 )
 py_x = tf.matmul(Z1, W2) + b2
 

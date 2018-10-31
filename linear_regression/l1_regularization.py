@@ -1,26 +1,26 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = 50
-D = 50
+N = 50 #size of data
+D = 50 #dimension
 
 X = (np.random.random((N,D)) - 0.5) * 10
 
-true_w = np.array([1, 0.5, -0.5] + [0]*(D-3))
+true_w = np.array([1, 0.5, -0.5] + [0]*(D-3)) #true weights
 
-Y = X.dot(true_w) + np.random.randn(N)*0.5
+Y = X.dot(true_w) + np.random.randn(N)*0.5 #model add some white noise
 
 costs = []
-w = np.random.randn(D)/np.sqrt(D)
+w = np.random.randn(D)/np.sqrt(D) #initialize random weights
 learning_rate = 0.001
-l1 = 10.0
+l1 = 10.0 #l1 regulariozation size
 for t in xrange(500):
-    Yhat = X.dot(w)
-    delta = Yhat - Y
+    Yhat = X.dot(w)#estimated Y
+    delta = Yhat - Y #discrepancy
     #gradient descent step
     w = w - learning_rate*(X.T.dot(delta)+ l1*np.sign(w))
-    mse = delta.dot(delta) / N
-    costs.append(mse)
+    mse = delta.dot(delta) / N #mse error
+    costs.append(mse)# record mse through iterations
 
 plt.plot(costs)
 plt.show()
