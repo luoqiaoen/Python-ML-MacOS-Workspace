@@ -4,4 +4,5 @@ Some simple excercise codes written by me when following online courses and some
 Courses offered by Lazycoder: https://github.com/lazyprogrammer/machine_learning_examples
 - Linear Regression in Python
 - Logistic Regression in Python
-- Deep Learning in Python (tensorFlow)
+- Deep Learning in Python
+- Practical Deep Learning in Theano and TensorFlow
