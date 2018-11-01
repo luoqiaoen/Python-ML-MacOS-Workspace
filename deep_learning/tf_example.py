@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 #Generate Random Training Data
 Nclass = 500
 D = 2 #input dimension
-M = 3 #hidden layer dimension
+M = 3 #hidden layer size
 K = 3 #number of classes
 
 X1 = np.random.randn(Nclass, D) + np.array([0,-2])
@@ -33,7 +33,7 @@ W2 = init_weights([M,K])
 b2 = init_weights([K])
 
 # only one hidden layer for now
-Z1 = tf.nn.sigmoid( tf.matmul(tfX, W1) + b1 )
+Z1 = tf.nn.sigmoid( tf.matmul(tfX, W1) + b1 ) #note b is added to every column
 py_x = tf.matmul(Z1, W2) + b2
 
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=py_x, labels=tfY))
