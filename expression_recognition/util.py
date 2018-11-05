@@ -2,19 +2,19 @@ import numpy as np
 import pandas as pd
 
 def init_weight_and_bias(M1,M2): #M1 is input no., M2 is output no.
-    W = np.random.randn(M1.M2)/np.sqrt(M1+M2)
+    W = np.random.randn(M1,M2)/np.sqrt(M1+M2)
     b = np.zeros(M2)
     return W.astype(np.float32), b.astype(np.float32)
 
 def init_filter(shape,poolsz):#for CNN, shape is tuple
-    w = np.random.randn(*shape)/np.sqrt(np.prod(shape[1:]+ shape[0]*np.prod(shape[2:]/np.prod(poolsz)))
+    w = np.random.randn(*shape)/np.sqrt(np.prod(shape[1:])+ shape[0]*np.prod(shape[2:]/np.prod(poolsz)))
     return w.astype(np.float32)
 
 def relu(x):
     return x*(x>0)
 
 def sigmoid(A):
-    return 1/(1+np.exp(-1))
+    return 1/(1+np.exp(-A))
 
 def softmax(A):
     expA = np.exp(A)
@@ -55,7 +55,7 @@ def getData(balance_ones=True):
     if balance_ones:
         # balance the 1 class
         X0,Y0 = X[Y!=1,:], Y[Y!=1]
-        X1 = X[Y==1,;]
+        X1 = X[Y==1,:]
         X1 = np.repeat(X1,9,axis=0)#repeat nine times
         X = np.vstack([X0,X1])
         Y = np.concatenate((Y0,[1]*len(X1)))
