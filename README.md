@@ -6,5 +6,6 @@ Courses offered by Lazyprogrammer on following topics:
 - Logistic Regression in Python
 - Deep Learning in Python
 - Practical Deep Learning in Theano and TensorFlow
+Utils files from https://github.com/lazyprogrammer/machine_learning_examples
 
 Theory used can be found in Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville)
