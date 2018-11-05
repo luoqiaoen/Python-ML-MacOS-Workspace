@@ -45,8 +45,8 @@ init = tf.global_variables_initializer()
 
 sess.run(init)
 
-for i in xrange(1000):
+for i in xrange(10000):
     sess.run(train_op, feed_dict = {tfX: X, tfY: T})
     pred = sess.run(predict_op, feed_dict={tfX: X, tfY: T})
-    if i % 10 == 0:
+    if i % 100 == 0:
         print np.mean(Y == pred)
