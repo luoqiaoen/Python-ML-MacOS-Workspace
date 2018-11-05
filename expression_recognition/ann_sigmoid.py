@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
-from util import getBinaryData, sigmoid, sigmoid_cost, error_rate, relu
+from util import getBinaryData, sigmoid, cost, error_rate, relu
 
 class ANN(object):
     def __init__(self, M):
@@ -46,10 +46,10 @@ class ANN(object):
             self.b1 -= learning_rate*(np.sum(dZ, axis=0) + reg*self.b1)
             if i % 100 == 0:
                 pYvalid, _ = self.forward(Xvalid)
-                c = sigmoid_cost(Yvalid, pYvalid)
+                c = cost(Yvalid, pYvalid)
                 costs.append(c)
                 e = error_rate(Yvalid, np.round(pYvalid))
-                print "i:", i, "costs:", c, "error:", e, "b2:", self.b2
+                print "i:", i, "costs:", c, "error:", e
                 if e < best_validation_error:
                     best_validation_error = e
         print "best validation error:", best_validation_error
@@ -68,7 +68,7 @@ def main():
     Y = np.concatenate(([0]*len(X0),[1]*len(X1)))
 
     model = ANN(100)
-    model.fit(X,Y,show_fig = True)
+    model.fit(X,Y,show_fig = False)
 
 if __name__ == '__main__':
     main()

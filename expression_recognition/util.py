@@ -23,8 +23,14 @@ def softmax(A):
 def sigmoid_cost(T,Y): #cross-entropy for sigmoid
     return -(T*np.log(Y)+(1-T)*np.log(1-Y)).sum()
 
-def cost(T,Y):#more general cross-entropy for softmax
-    return -(T*np.log(Y)).sum
+def cost2(T,Y):
+	#T is the target matrix
+	N = len(Y)
+	return -np.log(Y[np.arange(N),T]).sum()
+
+def cost(T,Y):
+	# T is the indicator matrix
+	return -(T*np.log(Y)).sum()
 
 def error_rate(targets, predictions):
     return np.mean(targets!=predictions)
