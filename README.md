@@ -7,6 +7,6 @@ Courses offered by Lazyprogrammer on following topics:
 - Deep Learning in Python
 - Practical Deep Learning in Theano and TensorFlow
 
-Utility files from https://github.com/lazyprogrammer/machine_learning_examples
+Some utility files from https://lazyprogrammer.me/
 
 Theory used can be found in Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville)
