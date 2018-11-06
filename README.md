@@ -9,6 +9,6 @@ Courses offered by Lazyprogrammer on following topics:
 - Deep Learning: Convolutional Neural Networks in Python
 - Deep Learning: Advanced Computer Vision
 
-Some utility files from https://lazyprogrammer.me/
+Some utility files from Lazyprogrammer at https://lazyprogrammer.me/
 
 Theory used can be found in Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville)
