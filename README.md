@@ -6,6 +6,8 @@ Courses offered by Lazyprogrammer on following topics:
 - Logistic Regression in Python
 - Deep Learning in Python
 - Practical Deep Learning in Theano and TensorFlow
+- Deep Learning: Convolutional Neural Networks in Python
+- Deep Learning: Advanced Computer Vision
 
 Some utility files from https://lazyprogrammer.me/
 
