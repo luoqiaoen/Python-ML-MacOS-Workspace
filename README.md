@@ -10,6 +10,7 @@ Courses offered by Lazyprogrammer:
 - Practical Deep Learning in Theano and TensorFlow
 - Deep Learning: Convolutional Neural Networks in Python
 - Deep Learning: Advanced Computer Vision
+
 Some utility files from Lazyprogrammer at https://lazyprogrammer.me/
 
 I used Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville) for more detailed theory.
