@@ -3,17 +3,16 @@ Some simple exercise codes written by me when following online courses and some 
 
 PPT made for group discussion: intro_to_deep_learning.pdf
 
-Courses offered by Lazyprogrammer on following topics:
+Courses offered by Lazyprogrammer:
 - Linear Regression in Python
 - Logistic Regression in Python
 - Deep Learning in Python
 - Practical Deep Learning in Theano and TensorFlow
 - Deep Learning: Convolutional Neural Networks in Python
 - Deep Learning: Advanced Computer Vision
-
 Some utility files from Lazyprogrammer at https://lazyprogrammer.me/
 
-Theory used can be found in Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville)
+I used Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville) for more detailed theory.
 
-A lot of tensorflow libraries/packages can be found on:
+A lot of ready-to-use tensorflow libraries/packages can be found on:
 https://github.com/tensorflow/models/tree/master/research
