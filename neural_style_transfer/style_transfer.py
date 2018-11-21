@@ -1,34 +1,21 @@
-# In this script, we will focus on generating an image
-# with the same style as the input image.
-# But NOT the same content.
-# It should capture only the essence of the style.
+#neural style transfer, old content, learned style
 
 from keras.models import Model, Sequential
 from keras.preprocessing import image
-from keras.layers import Input, Lambda, Dense, Flatten
-from keras.layers import AveragePooling2D, MaxPooling2D
+from keras.layers import Input, Lambda, Dense, Flatten, AveragePooling2D, MaxPooling2D
 from keras.layers.convolutional import Conv2D
-from keras.applications.vgg16 import VGG16
-from keras.applications.vgg16 import preprocess_input
+from keras.applications.vgg16 import VGG16, preprocess_input
 from skimage.transform import resize
-
-import keras.backend as K
-import numpy as np
-import matplotlib.pyplot as plt
-
-# from skimage.transform import resize
 from scipy.optimize import fmin_l_bfgs_b
 from datetime import datetime
 
+import keras.backend as K
 import numpy as np
 import matplotlib.pyplot as plt
-import keras.backend as K
 
 def VGG16_AvgPool(shape):
-  # we want to account for features across the entire image
-  # so get rid of the maxpool which throws away information
+  # maxpool throw away info, average pool better
   vgg = VGG16(input_shape=shape, weights='imagenet', include_top=False)
-
   new_model = Sequential()
   for layer in vgg.layers:
     if layer.__class__ == MaxPooling2D:
@@ -40,14 +27,11 @@ def VGG16_AvgPool(shape):
   return new_model
 
 def VGG16_AvgPool_CutOff(shape, num_convs):
-  # there are 13 convolutions in total
-  # we can pick any of them as the "output"
-  # of our content model
-
+  # there are 13 convolutions in vgg16
+  # we can pick any of them as the "output" of content model
   if num_convs < 1 or num_convs > 13:
     print("num_convs must be in the range [1, 13]")
     return None
-
   model = VGG16_AvgPool(shape)
   new_model = Sequential()
   n = 0
@@ -57,9 +41,7 @@ def VGG16_AvgPool_CutOff(shape, num_convs):
     new_model.add(layer)
     if n >= num_convs:
       break
-
   return new_model
-
 
 def unpreprocess(img):
   img[..., 0] += 103.939
@@ -68,29 +50,23 @@ def unpreprocess(img):
   img = img[..., ::-1]
   return img
 
-
 def scale_img(x):
   x = x - x.min()
   x = x / x.max()
   return x
 
 def gram_matrix(img):
-  # input is (H, W, C) (C = # feature maps)
-  # we first need to convert it to (C, H*W)
+  # input is (H, W, C) (C = # feature maps) we need to convert it to (C, H*W)
   X = K.batch_flatten(K.permute_dimensions(img, (2, 0, 1)))
-
-  # now, calculate the gram matrix
-  # gram = XX^T / N
+  # now, calculate the gram matrix = XX^T / N
   # the constant is not important since we'll be weighting these
   G = K.dot(X, K.transpose(X)) / img.get_shape().num_elements()
   return G
 
-
 def style_loss(y, t):
   return K.mean(K.square(gram_matrix(y) - gram_matrix(t)))
 
-
-# let's generalize this and put it into a function
+# generalize this and put it into a function
 def minimize(fn, epochs, batch_shape):
   t0 = datetime.now()
   losses = []
@@ -125,24 +101,16 @@ def load_img_and_preprocess(path, shape=None):
 
   return x
 
-
-
 content_img = load_img_and_preprocess(
-  # '../large_files/caltech101/101_ObjectCategories/elephant/image_0002.jpg',
-  # 'batman.jpg',
   'content/sydney.jpg',
-  # (225, 300),
 )
 
 # resize the style image
 # since we don't care too much about warping it
 h, w = content_img.shape[1:3]
 style_img = load_img_and_preprocess(
-  # 'styles/starrynight.jpg',
-  # 'styles/flowercarrier.jpg',
-  # 'styles/monalisa.jpg',
-  'styles/lesdemoisellesdavignon.jpg',
-  (h, w)
+    'styles/starrynight.jpg',
+    (h, w)
 )
 
 
@@ -161,13 +129,12 @@ vgg = VGG16_AvgPool(shape)
 # we only want 1 output
 # remember you can call vgg.summary() to see a list of layers
 # 1,2,4,5,7-9,11-13,15-17
+
 content_model = Model(vgg.input, vgg.layers[13].get_output_at(0))
 content_target = K.variable(content_model.predict(content_img))
 
-
 # create the style model
 # we want multiple outputs
-# we will take the same approach as in style_transfer2.py
 symbolic_conv_outputs = [
   layer.get_output_at(1) for layer in vgg.layers \
   if layer.name.endswith('conv1')
@@ -175,7 +142,6 @@ symbolic_conv_outputs = [
 
 # make a big model that outputs multiple layers' outputs
 style_model = Model(vgg.input, symbolic_conv_outputs)
-
 # calculate the targets that are output at each layer
 style_layers_outputs = [K.variable(y) for y in style_model.predict(style_img)]
 
@@ -183,15 +149,12 @@ style_layers_outputs = [K.variable(y) for y in style_model.predict(style_img)]
 # and only weight the style losses
 style_weights = [0.2,0.4,0.3,0.5,0.2]
 
-
-
 # create the total loss which is the sum of content + style loss
 loss = K.mean(K.square(content_model.output - content_target))
 
 for w, symbolic, actual in zip(style_weights, symbolic_conv_outputs, style_layers_outputs):
   # gram_matrix() expects a (H, W, C) as input
   loss += w * style_loss(symbolic[0], actual[0])
-
 
 # once again, create the gradients and loss + grads function
 # note: it doesn't matter which model's input you use
@@ -203,7 +166,6 @@ get_loss_and_grads = K.function(
   inputs=[vgg.input],
   outputs=[loss] + grads
 )
-
 
 def get_loss_and_grads_wrapper(x_vec):
   l, g = get_loss_and_grads([x_vec.reshape(*batch_shape)])
