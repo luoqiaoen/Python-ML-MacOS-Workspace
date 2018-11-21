@@ -106,7 +106,7 @@ content_img = load_img_and_preprocess(
 )
 
 # resize the style image
-# since we don't care too much about warping it
+# since we don't care too much about warping itkkkkkll;
 h, w = content_img.shape[1:3]
 style_img = load_img_and_preprocess(
     'styles/starrynight.jpg',
@@ -175,3 +175,4 @@ def get_loss_and_grads_wrapper(x_vec):
 final_img = minimize(get_loss_and_grads_wrapper, 10, batch_shape)
 plt.imshow(scale_img(final_img))
 plt.show()
+plt.savefig('starry_sydney.png')
