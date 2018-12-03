@@ -1,9 +1,10 @@
 #deep convolutional Generative Adversarial Networks
 #1. smallest building blocks: ConvLayer, FractionallyStridedConvLayer, DenseLayer
-#2. with the above three build: d_forward and g_forward to pass X and Z to get
-#   logits and generated figures
-#3. use build_discriminator and build_generator to finally build the DCGAN
-#4. use DCGAN() to specify and carryout training
+#2. with the above three, construct : d_forward and g_forward to pass X and Z to get
+#   logits and generated figures respectively
+#3. use the above building blocks to make build_discriminator and build_generator
+#   two arms of the GAN
+#4. use DCGAN() to build the GAN and do the training
 #5. use mnist() to specify DCGAN structure
 
 import os
