@@ -1,4 +1,4 @@
-# use fasion MNIST data at https://www.kaggle.com/zalando-research/fashionmnist 
+# use fasion MNIST data at https://www.kaggle.com/zalando-research/fashionmnist
 
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Conv2D, MaxPooling2D, Flatten, Dropout, BatchNormalization
@@ -55,7 +55,7 @@ print('Returned:', r)
 print(r.history.keys())
 
 plt.plot(r.history['loss'], label='loss')
-plt.plot(r.history['var_loss'], label='val_loss')
+plt.plot(r.history['val_loss'], label='val_loss')
 plt.legend()
 plt.show()
 

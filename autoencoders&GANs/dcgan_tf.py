@@ -1,4 +1,4 @@
-#deep convolutional Generative Adversarial Networks
+#   Deep Convolutional Generative Adversarial Networks
 #1. smallest building blocks: ConvLayer, FractionallyStridedConvLayer, DenseLayer
 #2. with the above three, construct : d_forward and g_forward to pass X and Z to get
 #   logits and generated figures respectively
