@@ -15,6 +15,5 @@ Also some snippets of coursework codes I wrote in the optimization and model-bas
 * single hidden layer autoencoder and deep convolutional Generative Adversarial Networks (dcGANs) in TensorFlow
 * image classification TensorFlow sample project
 * PPT made for short group discussion: intro_to_deep_learning.pdf
-* Purdue coursework code snippets
 
 I used the textbook: Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville) for more detailed theory.
