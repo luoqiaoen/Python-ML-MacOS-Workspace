@@ -17,3 +17,21 @@ Also some snippets of coursework codes I wrote in the optimization and model-bas
 * PPT made for short group discussion: intro_to_deep_learning.pdf
 
 I used the textbook: Deep Learning (Ian Goodfellow, Yoshua Bengio, and Aaron Courville) for more detailed theory.
+
+# Machine Learning Workspace on Linux
+Working examples and projects focused on image-to-image deep learning. Trained on Ubuntu 18.04.
+* Densenet
+* keras
+* cnn using tensorflow
+
+### Specs and Software Versions:
+- 12 core Intel i7 8700K
+- Nvidia GeForce RTX 2070
+- Ubuntu 18.04
+- python 3.6
+- Tensorflow 1.12
+- Keras 2.2.4
+- CUDA 10.0 
+- CUDNN 7.3.1 
+- OpenCV 3.31
+
