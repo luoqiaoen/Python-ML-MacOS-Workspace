@@ -1,5 +1,5 @@
 # Machine Learning Exercises
-Some written example codes when following online courses (offered by Lazyprogrammer, some utility files from https://lazyprogrammer.me/) and a few small projects.
+Some example codes I wrote while studying concepts and a few small projects.
 
 Also some snippets of coursework codes I wrote in the optimization and model-based image processing courses (just snippets as the lecturers may still be using the same exercises).
 
